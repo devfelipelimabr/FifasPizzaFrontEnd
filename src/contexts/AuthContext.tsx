@@ -1,6 +1,9 @@
 import { type } from "os";
 import { createContext, ReactNode, useState } from "react";
-import { destroyCookie } from "nookies";
+
+import { api } from "@/services/apiClient";
+
+import { destroyCookie, setCookie, parseCookies } from "nookies";
 import Router from "next/router";
 
 type AuthContextData = {
@@ -27,11 +30,9 @@ type AuthProviderProps = {
 
 export const AuthContex = createContext({} as AuthContextData);
 
-export const authToken = "@fifaspizzauth.token";
-
 export function signOut() {
   try {
-    destroyCookie(undefined, authToken);
+    destroyCookie(undefined, "@fifaspizzauth.token");
     Router.push("/");
   } catch (error) {
     console.log(`${error} - Erro ao deslogar.`);
@@ -43,7 +44,32 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const isAuth = !!user;
 
   async function signIn({ email, password }: SignInProps) {
-    alert(`Dados logados: ${email}, ${password}`);
+    try {
+      const response = await api.post("session", {
+        email,
+        password,
+      });
+      const { id, name, token } = response.data;
+
+      setCookie(undefined, "@fifaspizzauth.token", token, {
+        maxAge: 60 * 60 * 24 * 30, // Expira em 1 mês
+        path: "/", //Rotas que terão acesso ao cookie
+      });
+
+      setUser({
+        id,
+        name,
+        email,
+      });
+
+      // Passar o token para as próximas req
+      api.defaults.headers['Authorization'] = `Bearer ${token}`
+
+      // Redirecionar para dashboard
+      Router.push('/dashboard')
+    } catch (err) {
+      console.log(`ERRO AO ACESSAR ${err}`);
+    }
   }
 
   return (

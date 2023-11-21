@@ -1,4 +1,3 @@
-import { authToken } from "./../contexts/AuthContext";
 import axios, { AxiosError } from "axios";
 import { parseCookies } from "nookies";
 import { signOut } from "./../contexts/AuthContext";
@@ -11,7 +10,7 @@ export function setupAPIClient(ctx = undefined) {
   const api = axios.create({
     baseURL: "http://localhost:3333",
     headers: {
-      Authorization: `Bearer ${cookies[authToken]}`,
+      Authorization: `Bearer ${cookies["@fifaspizzauth.token"]}`,
     },
   });
 
