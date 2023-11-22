@@ -12,6 +12,8 @@ import { AuthContex } from "@/contexts/AuthContext";
 
 import Link from "next/link";
 
+import { toast } from "react-toastify";
+
 export default function Home() {
   const { signIn } = useContext(AuthContex);
 
@@ -23,7 +25,7 @@ export default function Home() {
     event.preventDefault();
 
     if (!email || !password) {
-      return alert("PREENCHA OS DADOS");
+      return toast.warning("Preencha todos os campos");
     }
 
     setloading(true);
@@ -50,12 +52,16 @@ export default function Home() {
             <Input
               placeholder="Email"
               type="text"
+              id="email"
+              name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <Input
               placeholder="Senha"
               type="password"
+              id="password"
+              name="password"
               value={password}
               onChange={(e) => setpassword(e.target.value)}
             />

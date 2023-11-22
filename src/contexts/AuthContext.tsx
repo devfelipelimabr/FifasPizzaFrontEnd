@@ -6,6 +6,8 @@ import { api } from "@/services/apiClient";
 import { destroyCookie, setCookie, parseCookies } from "nookies";
 import Router from "next/router";
 
+import { toast } from "react-toastify";
+
 type AuthContextData = {
   user: UserProps | undefined;
   isAuth: boolean;
@@ -72,9 +74,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
       // Passar o token para as próximas req
       api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
+      toast.success(`Usuário ${name} logado com sucesso!`);
+
       // Redirecionar para dashboard
       Router.push("/dashboard");
     } catch (err) {
+      toast.error(`Erro ao acessar!`);
       console.log(`ERRO AO ACESSAR ${err}`);
     }
   }
@@ -86,10 +91,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
         email,
         password,
       });
-      alert(`USUÁRIO ${name} CADASTRADO COM SUCESSO`);
+      toast.success(`Usuário ${name} cadastrado com sucesso!`);
 
       Router.push("/");
     } catch (err) {
+      toast.error(`Erro ao cadastrar usuário!`);
       console.log(`ERRO AO CADASTRAR - ${err}`);
     }
   }

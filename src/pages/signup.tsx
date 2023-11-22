@@ -11,6 +11,8 @@ import { AuthContex } from "@/contexts/AuthContext";
 
 import Link from "next/link";
 
+import { toast } from "react-toastify";
+
 export default function SignUp() {
   const { signUp } = useContext(AuthContex);
 
@@ -20,10 +22,10 @@ export default function SignUp() {
   const [loading, setLoading] = useState(false);
 
   async function handleSignUp(event: FormEvent) {
-    event.preventDefault;
+    event.preventDefault();
 
     if (!name || !password || !email) {
-      return alert("PREENCHA TODOS OS CAMPOS");
+      return toast.warning("Preencha todos os campos");
     }
 
     setLoading(true);
@@ -50,20 +52,29 @@ export default function SignUp() {
             <Input
               placeholder="Nome"
               type="text"
+              id="nome"
+              name="nome"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              autoComplete="nome"
             />
             <Input
               placeholder="Email"
               type="text"
+              id="email"
+              name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
             />
             <Input
               placeholder="Senha"
               type="password"
+              id="password"
+              name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              autoComplete="senha"
             />
 
             <Button type="submit" loading={loading}>
