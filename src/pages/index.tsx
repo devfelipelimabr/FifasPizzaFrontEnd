@@ -22,12 +22,20 @@ export default function Home() {
   async function handleLogin(event: FormEvent) {
     event.preventDefault();
 
+    if (!email || !password) {
+      return alert("PREENCHA OS DADOS");
+    }
+
+    setloading(true);
+
     let data = {
       email,
       password,
     };
 
     await signIn(data);
+
+    setloading(false);
   }
 
   return (
@@ -52,7 +60,7 @@ export default function Home() {
               onChange={(e) => setpassword(e.target.value)}
             />
 
-            <Button type="submit" loading={false}>
+            <Button type="submit" loading={loading}>
               Acessar
             </Button>
           </form>
