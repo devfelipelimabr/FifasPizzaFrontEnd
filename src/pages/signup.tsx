@@ -1,3 +1,4 @@
+import { useState, FormEvent, useContext } from "react";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -6,24 +7,66 @@ import logoImg from "../../public/logo.png";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 
+import { AuthContex } from "@/contexts/AuthContext";
+
 import Link from "next/link";
 
 export default function SignUp() {
+  const { signUp } = useContext(AuthContex);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function handleSignUp(event: FormEvent) {
+    event.preventDefault;
+
+    if (!name || !password || !email) {
+      return alert("PREENCHA TODOS OS CAMPOS");
+    }
+
+    setLoading(true);
+
+    let data = {
+      name,
+      email,
+      password,
+    };
+
+    await signUp(data);
+  }
+
   return (
     <>
       <Head>
         <title>Fifas Pizza - Cadastro</title>
       </Head>
       <div className="containerCenter">
-        <Image src={logoImg} alt="Logo fifas pizzaria" />
+        <Image src={logoImg} alt="Logo fifas pizzaria"  priority={true}/>
         <div className="login">
           <h1>criando sua conta</h1>
-          <form>
-            <Input placeholder="Nome" type="text" />
-            <Input placeholder="Email" type="text" />
-            <Input placeholder="Senha" type="password" />
+          <form onSubmit={handleSignUp}>
+            <Input
+              placeholder="Nome"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <Input
+              placeholder="Email"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              placeholder="Senha"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-            <Button type="submit" loading={false}>
+            <Button type="submit" loading={loading}>
               cadastrar
             </Button>
           </form>

@@ -44,7 +44,7 @@ export default function Home() {
         <title>Fifas Pizza - Login</title>
       </Head>
       <div className="containerCenter">
-        <Image src={logoImg} alt="Logo fifas pizzaria" />
+        <Image src={logoImg} alt="Logo fifas pizzaria" priority={true}/>
         <div className="login">
           <form onSubmit={handleLogin}>
             <Input
