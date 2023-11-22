@@ -12,6 +12,8 @@ import { AuthContex } from "@/contexts/AuthContext";
 
 import Link from "next/link";
 
+import { canSSRGuest } from "@/utils/canSSRGuest";
+
 import { toast } from "react-toastify";
 
 export default function Home() {
@@ -46,7 +48,7 @@ export default function Home() {
         <title>Fifas Pizza - Login</title>
       </Head>
       <div className="containerCenter">
-        <Image src={logoImg} alt="Logo fifas pizzaria" priority={true}/>
+        <Image src={logoImg} alt="Logo fifas pizzaria" priority={true} />
         <div className="login">
           <form onSubmit={handleLogin}>
             <Input
@@ -78,3 +80,9 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps = canSSRGuest(async (ctx) => {
+  return {
+    props: {},
+  };
+});

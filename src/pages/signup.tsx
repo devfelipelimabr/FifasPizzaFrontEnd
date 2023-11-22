@@ -45,7 +45,7 @@ export default function SignUp() {
         <title>Fifas Pizza - Cadastro</title>
       </Head>
       <div className="containerCenter">
-        <Image src={logoImg} alt="Logo fifas pizzaria"  priority={true}/>
+        <Image src={logoImg} alt="Logo fifas pizzaria" priority={true} />
         <div className="login">
           <h1>criando sua conta</h1>
           <form onSubmit={handleSignUp}>
