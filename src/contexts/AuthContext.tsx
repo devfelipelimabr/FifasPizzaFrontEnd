@@ -1,5 +1,5 @@
 import { type } from "os";
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState, useEffect } from "react";
 
 import { api } from "@/services/apiClient";
 
@@ -51,6 +51,29 @@ export function signOut() {
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<UserProps>();
   const isAuth = !!user;
+
+  useEffect(() => {
+    //Tentar pegar algo no cookie
+    const { "@fifaspizzauth.token": token } = parseCookies();
+
+    if (token) {
+      api
+        .get("/userinfo")
+        .then((res) => {
+          const { id, name, email } = res.data;
+
+          setUser({
+            id,
+            name,
+            email,
+          });
+        })
+        .catch(() => {
+          //Caso erro, deslogar o user
+          signOut();
+        });
+    }
+  }, []);
 
   async function signIn({ email, password }: SignInProps) {
     try {
