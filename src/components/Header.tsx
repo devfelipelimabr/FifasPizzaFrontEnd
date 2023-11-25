@@ -25,7 +25,7 @@ export function Header() {
             <p>Categoria</p>
           </Link>
 
-          <Link href="/carte">
+          <Link href="/product">
             <p>Cardápio</p>
           </Link>
 

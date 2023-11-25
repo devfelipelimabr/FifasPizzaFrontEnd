@@ -3,8 +3,9 @@ import { parseCookies } from "nookies";
 import { signOut } from "./../contexts/AuthContext";
 
 import { AuthTokenError } from "./errors/AuthTokenError";
+import { GetServerSidePropsContext } from "next";
 
-export function setupAPIClient(ctx = undefined) {
+export function setupAPIClient(ctx: GetServerSidePropsContext | null = null) {
   let cookies = parseCookies(ctx);
 
   const api = axios.create({
