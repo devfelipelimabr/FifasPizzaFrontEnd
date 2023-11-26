@@ -85,6 +85,118 @@ h3 {
   flex-direction: column;
 }
 
+.containerHeader {
+  display: flex;
+  flex-direction: row;
+
+  h1 {
+    text-transform: capitalize;
+  }
+
+  button {
+    background-color: transparent;
+    border: 0;
+    margin-left: 1rem;
+
+    &:hover {
+      background: transparent;
+      color: var(--secondary-color);
+    }
+  }
+}
+
+.listOrders {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.orderItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--bg-color-2);
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+
+  button,
+  button > a {
+    transition: all 300ms ease-in-out;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    font-size: 1.2rem;
+    color: white;
+    text-transform: capitalize;
+    width: 100%;
+    max-width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  button:hover {
+    background-color: var(--secondary-color);
+    border-radius: 0.5rem;
+  }
+}
+
+.tag {
+  width: 9px;
+  height: 60px;
+  background-color: var(--secondary-color);
+  border: 0;
+  border-radius: 0.5rem 0 0 0.5rem;
+  margin-right: 1rem;
+}
+
+button.react-modal-close {
+  background: transparent;
+  border: 0;
+}
+
+.ReactModal__Content {
+  button {
+    svg {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.modalContainer {
+  width: 100%;
+  max-width: 620px;
+  color: white;
+h2{
+  margin: 1rem 0;
+}
+
+h3{
+  color: var(--secondary-color);
+}
+}
+
+.containerItem{
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+
+  strong{
+    color: var(--primary-color);
+  }
+}
+
+.description{
+  margin-top: .25rem;
+  text-align: justify;
+}
+
+.noList{
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
 .login {
   margin-top: 2rem;
   width: 90%;
