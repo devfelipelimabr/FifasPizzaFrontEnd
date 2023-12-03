@@ -1,40 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+```markdown
+# Frontend
 
-## Getting Started
+Este é o front-end do projeto Fifas Pizza, desenvolvido com tecnologias como Next.js, React, TypeScript e outras bibliotecas importantes.
 
-First, run the development server:
+## Instalação
+
+Certifique-se de ter o Node.js instalado. Use o npm para instalar as dependências.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- `npm run dev`: Inicia o servidor de desenvolvimento usando Next.js.
+- `npm run build`: Compila o projeto para produção.
+- `npm start`: Inicia o servidor de produção.
+- `npm run lint`: Executa a verificação de linting com ESLint.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Tecnologias Utilizadas
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- [Next.js](https://nextjs.org/): Framework React para produção.
+- [React](https://reactjs.org/): Biblioteca JavaScript para construção de interfaces de usuário.
+- [TypeScript](https://www.typescriptlang.org/): Superset JavaScript que adiciona tipagem estática ao código.
+- [Axios](https://axios-http.com/): Cliente HTTP baseado em promises.
+- [JWT Decode](https://www.npmjs.com/package/jwt-decode): Decodifica tokens JWT no navegador.
+- [Nookies](https://www.npmjs.com/package/nookies): Cookies para Next.js.
+- [React Icons](https://react-icons.github.io/react-icons/): Ícones para React.
+- [React Modal](https://www.npmjs.com/package/react-modal): Componente modal para React.
+- [React Toastify](https://www.npmjs.com/package/react-toastify): Notificações toast para React.
+- [Sass](https://sass-lang.com/): Pré-processador CSS.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Licença
 
-## Learn More
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Este README oferece uma visão geral do projeto e das principais dependências utilizadas, mas você pode expandir e adicionar mais informações relevantes, como exemplos de uso, instruções detalhadas para execução do projeto, entre outros detalhes específicos do front-end.
